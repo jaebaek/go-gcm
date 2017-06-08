@@ -40,11 +40,12 @@ const (
 	// XMPPIQResult is a result for IQ query.
 	XMPPIQResult = "result"
 
-	// GCM service constants.
-	ccsHostProd = "gcm.googleapis.com"
+	// Jaebaek: FCM service constants.
+	ccsHostProd = "fcm-xmpp.googleapis.com"
 	ccsPortProd = "5235"
-	ccsHostDev  = "gcm-preprod.googleapis.com"
+	ccsHostDev  = "fcm-xmpp.googleapis.com"
 	ccsPortDev  = "5236"
+	xmppDomain = "gcm.googleapis.com"
 
 	// For CCS the min for exponential backoff has to be 1 sec
 	ccsMinBackoff = 1 * time.Second
@@ -398,5 +399,5 @@ func (c *gcmXMPP) retryMessage(cm CCSMessage, h MessageHandler) {
 
 // xmppUser generates an xmpp username from a sender ID.
 func xmppUser(xmppHost, senderID string) string {
-	return senderID + "@" + xmppHost
+	return senderID + "@" + xmppDomain
 }
